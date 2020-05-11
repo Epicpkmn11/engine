@@ -154,6 +154,7 @@ kbd,
 samp,
 pre {
   font-family: $monospace;
+  border: 1px solid mix($text-color, $background, 20%);
 }
 
 pre {
@@ -170,6 +171,7 @@ td > code {
   font-size: 0.8em;
   background: $code-background-color;
   border-radius: $border-radius;
+  white-space: nowrap;
 
   &:before,
   &:after {
