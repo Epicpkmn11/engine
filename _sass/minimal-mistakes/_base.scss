@@ -154,7 +154,7 @@ kbd,
 samp,
 pre {
   font-family: $monospace;
-  border: 1px solid mix($text-color, $background, 20%);
+  border: 1px solid mix($text-color, $background-color, 20%);
 }
 
 pre {
