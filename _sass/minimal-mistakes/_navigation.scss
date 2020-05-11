@@ -255,7 +255,6 @@
   .hidden-links {
     position: absolute;
     top: 100%;
-    right: 0;
     margin-top: 15px;
     padding: 5px;
     border: 1px solid $border-color;
@@ -314,6 +313,14 @@
         border-bottom: none;
       }
     }
+  }
+
+  .links-menu{
+    right: 2.1rem;
+  }
+
+  .lang-menu{
+    right: .1rem;
   }
 }
 
