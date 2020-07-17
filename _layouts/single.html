@@ -34,44 +34,46 @@ layout: default
         </header>
       {% endunless %}
 
-      <section class="page__content" itemprop="text">
-        {% if page.toc %}
-          <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
-              {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" %}
-            </nav>
-          </aside>
-        {% endif %}
+        <section class="page__content" itemprop="text">
+            {% if page.toc %}
+            <aside class="sidebar__right {% if page.toc_sticky %}sticky{% endif %}">
+                <nav class="toc">
+                    <header><h4 class="nav__title"><i class="fas fa-{{ page.toc_icon | default: 'file-alt' }}"></i> {{ page.toc_label | default: site.data.ui-text[site.locale].toc_label | default: "On this page" }}</h4></header>
+                    {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" %}
+                </nav>
+            </aside>
+            {% endif %}
 
-        {% assign split_path = page.path | split: "/" %}
-        {% assign locale = split_path[1] %}
+            {% assign split_path = page.path | split: "/" %}
+            {% assign locale = split_path[1] %}
 
-        {% for link in site.data.navigation[locale].bottom %}
-          {% if link.url contains 'http' %}
+            {% for link in site.data.navigation[locale].bottom %}
+            {% if link.url contains 'http' %}
             {% assign domain = '' %}
-          {% else %}
+            {% else %}
             {% assign domain = site.url | append: site.baseurl %}
-          {% endif %}
-          <div class ="notice">{{ link.title }}</div>
-        {% endfor %}
+            {% endif %}
+            <div class="notice">{{ link.title }}</div>
+            {% endfor %}
 
-        <hr>
-
-        <div id="waldo-tag-8408"></div>
-      
-        <hr>
-
-        {{ content }}
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
-
-        <center>
-            <div id="waldo-tag-8442"></div>
             <hr>
-            <div id="waldo-tag-8443"></div>
-        </center>
 
-      </section>
+            <center>
+                <!-- 728x90/970x90/320x50 -->
+                <div id="waldo-tag-8548"></div>
+            </center>
+
+            <hr>
+
+            {{ content }}
+            {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+                
+            <center>
+                <!-- 728x90/970x90/320x50 -->
+                <div id="waldo-tag-8549"></div>
+            </center>
+
+        </section>
 
       <footer class="page__meta">
         {% if site.data.ui-text[locale].meta_label %}
