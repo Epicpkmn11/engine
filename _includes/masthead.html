@@ -4,25 +4,27 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
+        {% assign split_path = page.path | split: "/" %}
+        {% assign locale = split_path[1] %}
+        {% assign titles = site.data.navigation[locale].main %}
+        {% if locale == 'en_US' %}
+          {% assign locale_var = '/' %}
+        {% else %}
+          {% assign locale_var = locale | prepend:'/' | append:'/' %}
+        {% endif %}
+
         {% unless logo_path == empty %}
-          <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}" alt=""></a>
+          <a class="site-logo" href="{{ locale_var | relative_url }}"><img src="{{ logo_path | relative_url }}" alt=""></a>
         {% endunless %}
-        <a class="site-title" href="{{ '/' | relative_url }}">
+        <a class="site-title" href="{{ locale_var | relative_url }}">
           {{ site.masthead_title | default: site.title }}
           {% if site.subtitle %}<span class="site-subtitle">{{ site.subtitle }}</span>{% endif %}
         </a>
+
         <ul class="visible-links">
-          {% assign split_path = page.path | split: "/" %}
-          {% assign locale = split_path[1] %}
-          {% assign titles = site.data.navigation[locale].main %}
-          {% if locale == 'en_US' %}
-            {% assign locale_var = '/' %}
-          {% else %}
-            {% assign locale_var = locale | prepend:'/' | append:'/' %}
-          {% endif %}
           {%- for link in site.data.navigation[locale].main -%}
             <li class="masthead__menu-item">
-              <a href="{{ link.url | relative_url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
+              <a href="{{ link.url | prepend: locale_var | relative_url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
             </li>
           {%- endfor -%}
         </ul>
