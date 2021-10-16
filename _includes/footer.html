@@ -2,7 +2,7 @@
 {% assign split_path = page.path | split: "/" %}
 {% assign locale = split_path[1] %}
 <div class="page__footer-follow">
-  <ul class="social-icons">
+  <ul class="footer-icons">
     {% if site.data.navigation[locale].footer %}
       {% for link in site.data.navigation[locale].footer %}
         {% if link.label and link.url %}
